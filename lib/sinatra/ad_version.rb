@@ -1,5 +1,5 @@
 module Sinatra
-  module LDAPAuth
+  module ADAuth
     VERSION="0.0.0"
   end
 end
