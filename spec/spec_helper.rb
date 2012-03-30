@@ -1,0 +1,1 @@
+require 'ldap_auth'
