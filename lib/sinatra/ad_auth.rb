@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'sinatra/ad_user'
+require './lib/sinatra/ad_user'
 
 module Sinatra
   module ADAuth
@@ -20,11 +20,13 @@ module Sinatra
 
     def self.registered(app)
       app.helpers ADAuth::Helpers
+      app.enable :sessions
 
       app.get '/login' do
         "<form method='POST' action='/login'>" +
           "<input type='text' name='user'>" +
-          "<input type='text' name='pass'>" +
+          "<input type='password' name='pass'>" +
+          "<input type='submit'>" + 
           "</form>"
       end
 
@@ -32,11 +34,12 @@ module Sinatra
       # Directory server
       #
       app.post '/login' do
-        user = Sinatra::ADAuth::User.authenticate(params[:user],params[:pass])
+        user = Sinatra::ADAuth::User.authenticate(params[:user],params[:pass], settings.conf)
 
-        if params[:user] == options.username && params[:pass] == options.password
+        if ! user.nil?
           session[:authorized] = true
-          redirect '/'
+          puts "here we are #{session[:authorized]}"
+          redirect '/public'
         else
           session[:authorized] = false
           redirect '/login'
