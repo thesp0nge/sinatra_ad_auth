@@ -2,15 +2,15 @@
 require './lib/sinatra/ad_version'
 
 Gem::Specification.new do |s|
-  s.name        = "sinatra_ldap_auth"
+  s.name        = "sinatra_ad_auth"
   s.version     = Sinatra::ADAuth::VERSION
   s.authors     = ["Paolo Perego"]
   s.email       = ["thesp0nge@gmail.com"]
   s.homepage    = "http://armoredcode.com"
-  s.summary     = %q{write a great summary here}
-  s.description = %q{write a great description here}
+  s.summary     = %q{Sinatra extension to add authentication against a given active directory}
+  s.description = %q{Sinatra extension to add authentication against a given active directory}
 
-  s.rubyforge_project = "sinatra_ldap_auth"
+  s.rubyforge_project = "sinatra_ad_auth"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
