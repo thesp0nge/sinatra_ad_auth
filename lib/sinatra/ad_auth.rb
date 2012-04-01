@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require './lib/sinatra/ad_user'
+require 'sinatra/ad_user'
 
 module Sinatra
   module ADAuth
